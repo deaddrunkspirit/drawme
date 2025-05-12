@@ -1,0 +1,20 @@
+I want to create an app that is a whiteboard, with minimalistic design like excalidraw.com
+
+I want it to be an app that is hosted on github pages with a push to branch strategy, 
+
+I want uou to create a simple HTML JS application, you can style it with CSS or TailwindCSS if you wish
+
+
+funcionality:
+1. I can draw with my mouse
+2. I need a menu on the top right corner that is positioned absolute to the rest layout
+    2.1 I can pick the size of the brush with a slider
+    2.2 I can reset the layout fully
+    2.3 Canvas size is infinite, so you can swith modes (painting, grabing, eraser)
+        2.3.1 Grabing functionality works - when you click and hold you can drag the Canvas, if not clicked it does nothing
+        2.3.2 Painting functionality - you actually paint (size picker affects the size)
+        2.3.3 Eraser fuynctionality - erase the painting (size picker affects the size)
+
+    2.4 Everything works smooth like here: https://kleki.com/
+
+dont use bundling, I just want to publish a simple code, strictly use JS, not TS, avoid frameworks and dependencies make it vanilla

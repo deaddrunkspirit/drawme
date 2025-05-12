@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minimal Whiteboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="menu">
+    <label for="brushSize">Brush Size:</label>
+    <input type="range" id="brushSize" min="1" max="100" value="5">
+    <div class="button-grid">
+      <button id="paintMode">🎨 Paint</button>
+      <button id="eraseMode">🧹 Eraser</button>
+      <button id="grabMode">✋ Grab</button>
+      <button id="reset">♻️ Reset</button>
+    </div>
+  </div>
+  <canvas id="whiteboard"></canvas>
+  <script src="main.js"></script>
+</body>
+</html> 
