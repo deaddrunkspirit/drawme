@@ -1,3 +1,6 @@
+# 🔗 URL
+[https://deaddrunkspirit.github.io/drawme/](https://deaddrunkspirit.github.io/drawme/)
+
 # 🖍️ Minimal Vanilla Whiteboard
 
 A minimal, modern, and smooth whiteboard app inspired by [excalidraw.com](https://excalidraw.com), built with **vanilla JavaScript, HTML, and CSS**. No frameworks, no dependencies, no build step—just open and draw!
@@ -27,10 +30,6 @@ A minimal, modern, and smooth whiteboard app inspired by [excalidraw.com](https:
 - **Brush Size:** Use the slider to adjust.
 - **Reset:** Click ♻️ Reset to clear and reset brush size.
 
-## 🌐 Deploy to GitHub Pages
-1. Push all files to your GitHub repository (e.g., `main` or `gh-pages` branch).
-2. In your repo settings, enable GitHub Pages for the branch containing your files.
-3. Visit the provided GitHub Pages URL to use your whiteboard online!
 
 ## 📄 License
 MIT — see [LICENSE](LICENSE).
