@@ -250,12 +250,11 @@ button:active {
     gap: 4px;
   }
   .button-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
+    gap: 10px;
   }
   button {
-    padding: 5.4px 0;
-    font-size: 0.405rem;
+    font-size: 1.1rem;
+    padding: 18px 0;
   }
   #brushSize {
     margin-bottom: 18px;
