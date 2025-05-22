@@ -18,6 +18,8 @@ let paths = [];
 let scale = 1;
 const MIN_SCALE = 0.3;
 const MAX_SCALE = 3;
+let lastTouchDist = null;
+let lastTouchMid = null;
 
 function resizeCanvas() {
   canvas.width = window.innerWidth;
@@ -139,6 +141,19 @@ canvas.onmouseup = canvas.onmouseleave = e => {
 
 // Touch support
 canvas.ontouchstart = e => {
+  if (e.touches.length === 2) {
+    // Pinch start
+    lastTouchDist = Math.hypot(
+      e.touches[0].clientX - e.touches[1].clientX,
+      e.touches[0].clientY - e.touches[1].clientY
+    );
+    lastTouchMid = {
+      x: (e.touches[0].clientX + e.touches[1].clientX) / 2,
+      y: (e.touches[0].clientY + e.touches[1].clientY) / 2
+    };
+    e.preventDefault();
+    return;
+  }
   const t = e.touches[0];
   const x = (t.clientX - viewX) / scale;
   const y = (t.clientY - viewY) / scale;
@@ -159,6 +174,31 @@ canvas.ontouchstart = e => {
   }
 };
 canvas.ontouchmove = e => {
+  if (e.touches.length === 2) {
+    // Pinch zoom
+    const dist = Math.hypot(
+      e.touches[0].clientX - e.touches[1].clientX,
+      e.touches[0].clientY - e.touches[1].clientY
+    );
+    const mid = {
+      x: (e.touches[0].clientX + e.touches[1].clientX) / 2,
+      y: (e.touches[0].clientY + e.touches[1].clientY) / 2
+    };
+    if (lastTouchDist) {
+      let scaleChange = dist / lastTouchDist;
+      let newScale = scale * scaleChange;
+      newScale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, newScale));
+      // Adjust viewX/viewY so zoom is centered on midpoint
+      viewX -= (mid.x - viewX) * (newScale / scale - 1);
+      viewY -= (mid.y - viewY) * (newScale / scale - 1);
+      scale = newScale;
+      redraw();
+    }
+    lastTouchDist = dist;
+    lastTouchMid = mid;
+    e.preventDefault();
+    return;
+  }
   if (isDrawing) {
     const t = e.touches[0];
     const x = (t.clientX - viewX) / scale;
@@ -179,6 +219,10 @@ canvas.ontouchmove = e => {
   e.preventDefault();
 };
 canvas.ontouchend = canvas.ontouchcancel = e => {
+  if (e.touches.length < 2) {
+    lastTouchDist = null;
+    lastTouchMid = null;
+  }
   isDrawing = false;
   if (isGrabbing) {
     isGrabbing = false;

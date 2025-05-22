@@ -171,6 +171,9 @@ button:active {
   color: #bdbdc2;
   transform: scale(0.97);
 }
+#menu .close-btn {
+  display: none;
+}
 @media (max-width: 768px) {
   #menu {
     margin: 12px;
@@ -207,38 +210,77 @@ button:active {
     width: 14.4px;
     height: 14.4px;
   }
+  #menu .close-btn {
+    display: block;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: none;
+    border: none;
+    color: #f3f3f7;
+    font-size: 1.5rem;
+    z-index: 30;
+    cursor: pointer;
+  }
 }
 @media (max-width: 480px) {
   #menu {
-    margin: 6px;
+    width: 44px;
+    height: 44px;
+    margin: 12px;
+    top: 0;
+    right: 0;
+    left: auto;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
   }
   #menu .menu-content {
-    width: 100%;
-    min-height: 43.2px;
-    padding: 7.2px 3.6px 3.6px 3.6px;
-    margin-right: 10.8px;
-    gap: 3.6px;
+    width: 90vw;
+    min-width: 0;
+    left: auto;
+    right: 0;
+    top: 0;
+    margin-right: 0;
+    border-radius: 12px;
+    box-shadow: 0 6px 32px rgba(0,0,0,0.28);
+    padding: 14px 8px 8px 8px;
+    gap: 4px;
   }
   .button-grid {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
-  }
-  #menu:hover {
-    left: unset;
-    right: unset;
   }
   button {
     padding: 5.4px 0;
     font-size: 0.405rem;
   }
   #brushSize {
-    margin-bottom: 2.7px;
-    height: 1.35px;
+    margin-bottom: 18px;
+    height: 16px;
+    accent-color: #4f8cff;
   }
-  #brushSize::-webkit-slider-thumb,
-  #brushSize::-moz-range-thumb,
+  #brushSize::-webkit-slider-thumb {
+    width: 32px;
+    height: 32px;
+    background: #4f8cff;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 8px rgba(79,140,255,0.25);
+  }
+  #brushSize::-moz-range-thumb {
+    width: 32px;
+    height: 32px;
+    background: #4f8cff;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 8px rgba(79,140,255,0.25);
+  }
   #brushSize::-ms-thumb {
-    width: 7.2px;
-    height: 7.2px;
+    width: 32px;
+    height: 32px;
+    background: #4f8cff;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 8px rgba(79,140,255,0.25);
   }
 } 
