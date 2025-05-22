@@ -186,4 +186,28 @@ canvas.ontouchend = canvas.ontouchcancel = e => {
   }
 };
 
+function isMobile() {
+  return window.matchMedia('(max-width: 768px)').matches;
+}
+
+const menu = document.getElementById('menu');
+const closeBtn = document.querySelector('.close-btn');
+
+if (isMobile()) {
+  menu.addEventListener('touchstart', function(e) {
+    if (!menu.classList.contains('open')) {
+      menu.classList.add('open');
+      e.stopPropagation();
+    }
+  });
+  window.closeMenu = function() {
+    menu.classList.remove('open');
+  };
+  document.addEventListener('touchstart', function(e) {
+    if (menu.classList.contains('open') && !menu.contains(e.target)) {
+      menu.classList.remove('open');
+    }
+  });
+}
+
 setMode('paint'); 
